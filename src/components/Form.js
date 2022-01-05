@@ -1,4 +1,4 @@
-
+import '../App.css';
 const Form = ({ setInputText, inputText, todos, setTodos }) => {
 
     const inputHandler = (e) => {
@@ -17,8 +17,10 @@ const Form = ({ setInputText, inputText, todos, setTodos }) => {
 
     return (
         <form onSubmit={submitHandler}>
-            <input value={inputText || ''} onChange={inputHandler} type="text" />
-            <button>Add</button>
+            <div className='Input-box'>
+                <input value={inputText || ''} onChange={inputHandler} type="text" placeholder='Your Task' />
+                <button>Add</button>
+            </div>
         </form>
     );
 }
