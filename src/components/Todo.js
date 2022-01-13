@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 const Todo = ({ text, todo, todos, setTodos }) => {
     const [edit, setEdit] = useState(false);
     const [editUp, setEditup] = useState(text);
+    const prvInput = useRef(text)
 
 
     const deletetask = () => {
@@ -21,6 +22,8 @@ const Todo = ({ text, todo, todos, setTodos }) => {
 
     const edittext = () => {
         setEdit(!edit);
+        setEditup(editUp)
+
     }
 
     const update = (e) => {
@@ -37,9 +40,18 @@ const Todo = ({ text, todo, todos, setTodos }) => {
         ))
         //setEditup(text)
         setEdit(!edit)
+        prvInput.current = editUp
+    }
+
+    const canceltext = () => {
+        setEdit(!edit)
+        setEditup(prvInput.current)
+        console.log(prvInput.current)
+
     }
 
     const eva = (e) => {
+        setEditup(editUp)
         e.preventDefault(e.target.value);
         setEditup(e.target.value)
         //console.log(editUp + "===> todo edit submit!!");
@@ -61,9 +73,9 @@ const Todo = ({ text, todo, todos, setTodos }) => {
             ) : (
                 <>
 
-                    <input type="Text" value={editUp} onChange={eva} />
+                    <input type="text" value={editUp} onChange={eva} />
                     <button onClick={update} >Save</button>
-                    <button onClick={edittext} >Cancel</button>
+                    <button onClick={canceltext} >Cancel</button>
                 </>
             )}
         </div>
