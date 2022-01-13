@@ -1,20 +1,25 @@
-import { useState } from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
 import './App.css';
-import Form from './components/Form';
-import TodoList from './components/TodoList';
+import Home from './pages/home';
+import Aaxios from './pages/axios';
 
-function App() {
-  const [inputText, setInputText] = useState();
-  const [todos, setTodos] = useState([]);
+export default function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Todo App</h1>
-        <Form todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText} />
-        <TodoList todos={todos} setTodos={setTodos} />
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="axios" element={<Aaxios />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+
   );
 }
 
-export default App;
+

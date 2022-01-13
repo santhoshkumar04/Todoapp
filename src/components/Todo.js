@@ -22,7 +22,7 @@ const Todo = ({ text, todo, todos, setTodos }) => {
 
     const edittext = () => {
         setEdit(!edit);
-        setEditup(editUp)
+        //setEditup(editUp)
 
     }
 
